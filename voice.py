@@ -25,21 +25,6 @@ greetings = [f"whats up master {name}",
              f"Bonjour, Monsieur {name}! Comment ça va? Wait, why the hell am I speaking French?" ]
 
 # Listen for the wake word "Tomato"
-def listen_for_wake_word(source):
-    print("Listening for 'Tomato'...")
-
-    while True:
-        audio = r.listen(source)
-        try:
-            text = r.recognize_google(audio)
-            if "tomato" in text.lower():
-                print("Wake word detected.")
-                engine.say(np.random.choice(greetings))
-                engine.runAndWait()
-                listen_and_respond(source)
-                break
-        except sr.UnknownValueError:
-            pass
 
 # Listen for input and respond with OpenAI API
 def listen_and_respond(source):
